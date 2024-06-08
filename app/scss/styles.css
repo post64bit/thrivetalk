@@ -281,7 +281,7 @@ html.scroll-disable {
 }
 
 .header__photo {
-  background-image: url(./images/intro-img.png);
+  background-image: url(../images/intro-img.png);
   height: 134%;
   width: 134%;
   background-size: contain;

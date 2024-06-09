@@ -1,7 +1,6 @@
 window.onload = function () {
     document.getElementById("background-block").style.height = getComputedStyle(document.getElementById("header-elements")).height
-}
-
+} 
 function makeBlocksColorful() {
     const blocks = document.getElementsByClassName('block')
     const myColors = ['FFE2DE', 'C4E769', '62D0DF', '0052C1']
@@ -9,6 +8,7 @@ function makeBlocksColorful() {
         blocks[i].style.backgroundColor = '#' + myColors[i]
     }
 }
+
 
 function adjustHeaderWidth() {
     let theWidthNeeded = (Number(getComputedStyle(document.getElementById("container")).width.slice(0, -2)) - 40).toString() + 'px'

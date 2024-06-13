@@ -453,7 +453,7 @@ html.scroll-disable {
 }
 
 .photo-block {
-  background-image: url(./images/photo-block.png);
+  background-image: url(../images/photo-block.png);
   background-size: cover;
 }
 

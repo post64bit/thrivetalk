@@ -5,7 +5,7 @@ const uglify = require('gulp-uglify-es').default;
 const browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
-const imagemin = require('gulp-imagemin');
+
 
 
 function styles() {
@@ -41,7 +41,8 @@ function building() {
     return src([
         'app/css/style.min.css',
         'app/js/main.min.js',
-        'app/**/*.html'
+        'app/**/*.html',
+        'app/images/**'
     ], { base: 'app' })
         .pipe(dest('dist'))
 }
@@ -49,14 +50,12 @@ function cleanDist() {
     return src('dist')
         .pipe(clean());
 }
-function minimizeImages() {
-    return src('app/images/**')
-        .pipe(imagemin({
-            progressive: true,
-            interlaced: true,
-            pngquant: true
-        }))
-        .pipe(dest('app/images'));
+const imagemin = require('gulp-imagemin');
+ 
+async function imageminFunc() {
+    src('app/images/*')
+        .pipe(imagemin())
+        .pipe(dest('dist/images'))
 }
 
 
@@ -65,6 +64,6 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
 
-exports.build = series(minimizeImages, cleanDist, building)
+exports.build = series(imageminFunc, cleanDist, building)
 
 exports.default = parallel(styles, scripts, browsersync, watching);
